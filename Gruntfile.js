@@ -52,14 +52,25 @@ module.exports = function(grunt) {
                     'dist/public/assets/styles.css': 'src/app/less/main.less'
                 }
             }
-        }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'src/app/**/*.js', 'src/app/**/*.jsx']
+        },
+        watch: {
+            scripts: {
+                files: 'src/**',
+                tasks: ['development'],
+            },
+        },
     });
  
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-jsxhint');
+    grunt.loadNpmTasks('grunt-contrib-watch');
  
-    grunt.registerTask('production', ['browserify:production', 'less:production', 'copy']);
-    grunt.registerTask('development', ['browserify:development', 'less:development', 'copy']);
+    grunt.registerTask('production', ['jshint', 'browserify:production', 'less:production', 'copy']);
+    grunt.registerTask('development', ['jshint', 'browserify:development', 'less:development', 'copy']);
     grunt.registerTask('default', 'production');
 };
