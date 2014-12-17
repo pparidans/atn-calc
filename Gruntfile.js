@@ -62,6 +62,14 @@ module.exports = function(grunt) {
                 tasks: ['development'],
             },
         },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec'
+                },
+                src: ['test/**/*.js']
+            }
+        }
     });
  
     grunt.loadNpmTasks('grunt-browserify');
@@ -69,8 +77,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-jsxhint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-mocha-test');
  
     grunt.registerTask('production', ['jshint', 'browserify:production', 'less:production', 'copy']);
     grunt.registerTask('development', ['jshint', 'browserify:development', 'less:development', 'copy']);
     grunt.registerTask('default', 'production');
+    grunt.registerTask('test', 'mochaTest');
 };

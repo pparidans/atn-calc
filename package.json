@@ -1,5 +1,5 @@
 {
-  "name": "convertoo-tools",
+  "name": "atn-calc",
   "version": "1.0.0",
   "description": "Convertoo's other converters, calculators & utilities",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/convertoo-tools"
+    "url": "https://github.com/pparidans/atn-calc"
   },
   "author": "Pierre Paridans",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "grunt-contrib-less": "^0.12.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jsxhint": "^0.4.0",
+    "grunt-mocha-test": "^0.12.4",
     "minifyify": "^4.4.0",
     "mocha": "^2.0.1",
     "react-tools": "^0.12.1",
