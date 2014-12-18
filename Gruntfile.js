@@ -79,8 +79,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-test');
  
-    grunt.registerTask('production', ['jshint', 'browserify:production', 'less:production', 'copy']);
-    grunt.registerTask('development', ['jshint', 'browserify:development', 'less:development', 'copy']);
+    grunt.registerTask('production', ['jshint', 'mochaTest', 'browserify:production', 'less:production', 'copy']);
+    grunt.registerTask('development', ['jshint', 'mochaTest', 'browserify:development', 'less:development', 'copy']);
     grunt.registerTask('default', 'production');
     grunt.registerTask('test', 'mochaTest');
 };
