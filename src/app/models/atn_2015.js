@@ -5,16 +5,16 @@ module.exports = {
 	priceYearlyDiminution: 0.06,
 
 	// TODO: extract yearly based values as Object properties
-	calculate: function(fuel_type, price, co2, buy_date, sell_date) {
+	calculate: function(fuelType, price, co2, firstRegistrationDate, sellDate) {
 		// TODO: use buy_date & sell_date for prorata
-		var atn = this.priceCoefficient(price, buy_date, sell_date) * this.co2Coefficient(fuel_type, co2) * 6/7;
+		var atn = this.priceCoefficient(price, firstRegistrationDate, sellDate) * this.co2Coefficient(fuelType, co2) * 6/7;
 		if(atn < this.minValue) {
 			return this.minValue;
 		}
 		return atn;
 	},
-	co2Coefficient: function(fuel_type, co2) {
-		if(fuel_type === 'gazoil') {
+	co2Coefficient: function(fuelType, co2) {
+		if(fuelType === 'gazoil') {
 			return this.calculateCo2Coefficient(95, co2);
 		} else { // essence, lpg, natural gaz
 			return this.calculateCo2Coefficient(116, co2);
