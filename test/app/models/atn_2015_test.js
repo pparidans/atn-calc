@@ -62,6 +62,9 @@ describe('Atn2015', function() {
 		it('should return 8500 when the price is 10000 and first registration is 6 years (70%) before sell date', function() {
 			assert.equal(8500, Atn2015.priceCoefficient(10000, moment('2009-01-01'), moment('2014-12-31')));
 		});
+		it('should return 8500 when the price is 10000 and first registration is more than 6 years (70%) before sell date', function() {
+			assert.equal(8500, Atn2015.priceCoefficient(10000, moment('2008-01-01'), moment('2014-12-31')));
+		});
 	});
 
 });

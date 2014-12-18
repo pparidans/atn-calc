@@ -3,6 +3,7 @@ var moment = require('moment');
 module.exports = {
 	minValue: 1250.00,
 	priceYearlyDiminution: 0.06,
+	minPriceCoefficient: 0.70,
 
 	// TODO: extract yearly based values as Object properties
 	calculate: function(fuelType, price, co2, firstRegistrationDate, sellDate) {
@@ -25,7 +26,7 @@ module.exports = {
 		var aggr = price;
 		var i = 1.0;
 		var coef = 1.0;
-		while(diff > 0) {
+		while(diff > 0 && coef >= this.minPriceCoefficient) {
 			coef = coef - this.priceYearlyDiminution;
 			aggr = aggr + (price * coef);
 			diff = diff - 12;
