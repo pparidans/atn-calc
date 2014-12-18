@@ -21,16 +21,16 @@ module.exports = {
 		}
 	},
 	calculateCo2Coefficient: function(baseline, co2) {
-		// TODO: implement minCoef + degress coef
-		var minCoef = 0.055;
+		var baseCoef = 0.055;
+		var minCoef = 0.04;
 		var maxCoef = 0.18;
-		if(co2 <= baseline) {
-			return minCoef;
-		}
-		var overflow = co2 - baseline;
-		var coef = minCoef + overflow * 0.001;
+
+		var coef = baseCoef + (co2 - baseline) * 0.001;
 		if(coef > maxCoef) {
 			return maxCoef;
+		}
+		if(coef < minCoef) {
+			return minCoef;
 		}
 		return coef;
 	}
